@@ -51,6 +51,14 @@ public class TennisScoreServiceImpl implements TennisScoreService {
         player2.incrementPoints();
     }
 
+    public String player1Score() {
+        return player1.getScore();
+    }
+
+    public String player2Score() {
+        return player2.getScore();
+    }
+
     public boolean isDeuce() {
         return player1.getPoints() >= 3 && player2.getPoints() >= 3 && player1.getPoints() == player2.getPoints();
     }
@@ -70,12 +78,10 @@ public class TennisScoreServiceImpl implements TennisScoreService {
     }
 
     public void player1Winner() {
-        player1.setWinner(true);
         printer.printPlayerWinner(player1.getId());
     }
 
     public void player2Winner() {
-        player2.setWinner(true);
         printer.printPlayerWinner(player2.getId());
     }
     public void player1Advantage() {

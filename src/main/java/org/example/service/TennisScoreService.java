@@ -8,6 +8,8 @@ public interface TennisScoreService {
     public void setState(GameStateHandler state);
     public void incrementPlayer1Points();
     public void incrementPlayer2Points();
+    public String player1Score();
+    public String player2Score();
     public boolean isDeuce();
     public boolean isGameWonByPlayer1();
     public boolean isGameWonByPlayer2();

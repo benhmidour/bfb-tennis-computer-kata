@@ -17,7 +17,7 @@ public class NormalState implements GameStateHandler {
             context.setState(new DeuceState(context));
             context.deuce();
         } else if (context.isGameWonByPlayer1()) {
-            System.out.println("Player A wins the game");
+            context.player1Winner();
             context.resetGame();
         } else {
             context.printCurrentScore();
@@ -31,7 +31,7 @@ public class NormalState implements GameStateHandler {
             context.setState(new DeuceState(context));
             context.deuce();
         } else if (context.isGameWonByPlayer2()) {
-            System.out.println("Player B wins the game");
+            context.player2Winner();
             context.resetGame();
         } else {
             context.printCurrentScore();

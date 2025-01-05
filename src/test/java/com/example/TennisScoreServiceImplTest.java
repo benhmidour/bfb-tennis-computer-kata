@@ -1,9 +1,11 @@
 package com.example;
 
 import org.example.model.Player;
+import org.example.printer.TennisPrinter;
 import org.example.service.impl.TennisScoreServiceImpl;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.mockito.Mockito.*;
@@ -12,54 +14,40 @@ import static org.testng.Assert.*;
 public class TennisScoreServiceImplTest {
 
     @Mock
-    private Player player1;
-
-    @Mock
-    private Player player2;
+    private TennisPrinter tennisPrinter;
 
     private TennisScoreServiceImpl tennisScoreService;
 
     @BeforeMethod
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        tennisScoreService = new TennisScoreServiceImpl(player1, player2);
+        Player player1 = new Player('A');
+        Player player2 = new Player('B');
+        tennisScoreService = new TennisScoreServiceImpl(player1, player2, tennisPrinter);
     }
 
     @Test
     public void testComputeScore_Player1WinsPoint() {
-        when(player1.getId()).thenReturn('A');
-        when(player2.getId()).thenReturn('B');
-
         tennisScoreService.computeScore("A");
 
-        verify(player1).incrementPoints();
-        verify(player2, never()).incrementPoints();
+        Assert.assertEquals(tennisScoreService.player1Score(), "15");
     }
 
     @Test
     public void testComputeScore_Player2WinsPoint() {
-        when(player1.getId()).thenReturn('A');
-        when(player2.getId()).thenReturn('B');
-
         tennisScoreService.computeScore("B");
 
-        verify(player2).incrementPoints();
-        verify(player1, never()).incrementPoints();
+        Assert.assertEquals(tennisScoreService.player2Score(), "15");
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testComputeScore_InvalidInput() {
-        when(player1.getId()).thenReturn('A');
-        when(player2.getId()).thenReturn('B');
-
         tennisScoreService.computeScore("C");
     }
 
     @Test
     public void testIsDeuce() {
-        when(player1.getPoints()).thenReturn(3);
-        when(player2.getPoints()).thenReturn(3);
-
+        tennisScoreService.computeScore("AAABBB");
         boolean result = tennisScoreService.isDeuce();
 
         assertTrue(result);
@@ -67,40 +55,29 @@ public class TennisScoreServiceImplTest {
 
     @Test
     public void testIsGameWonByPlayer1() {
-        when(player1.getPoints()).thenReturn(4);
-        when(player2.getPoints()).thenReturn(2);
+        tennisScoreService.computeScore("AAAA");
 
-        boolean result = tennisScoreService.isGameWonByPlayer1();
-
-        assertTrue(result);
+        verify(tennisPrinter, times(1)).printPlayerWinner('A');
     }
 
     @Test
     public void testIsGameWonByPlayer2() {
-        when(player1.getPoints()).thenReturn(2);
-        when(player2.getPoints()).thenReturn(4);
+        tennisScoreService.computeScore("BBBB");
 
-        boolean result = tennisScoreService.isGameWonByPlayer2();
-
-        assertTrue(result);
+        verify(tennisPrinter, times(1)).printPlayerWinner('B');
     }
 
     @Test
     public void testResetGame() {
-        tennisScoreService.resetGame();
-
-        verify(player1).resetPoints();
-        verify(player2).resetPoints();
+        tennisScoreService.computeScore("AAAA");
+        assertEquals(tennisScoreService.player1Score(), "0");
+        assertEquals(tennisScoreService.player2Score(), "0");
     }
 
     @Test
     public void testPrintCurrentScore() {
-        when(player1.getScore()).thenReturn("30");
-        when(player2.getScore()).thenReturn("40");
+        tennisScoreService.computeScore("A");
 
-        tennisScoreService.printCurrentScore();
-
-        verify(player1).getScore();
-        verify(player2).getScore();
+        verify(tennisPrinter, times(1)).printCurrentScore(anyChar(),any(),anyChar(),any());
     }
 }
