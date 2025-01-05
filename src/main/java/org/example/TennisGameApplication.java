@@ -10,7 +10,7 @@ public class TennisGameApplication {
         Player player2 = new Player('B');
         TennisScoreService scoreComputer = new TennisScoreServiceImpl(player1, player2);
         try {
-            scoreComputer.computeScore("ABBBAAA");
+            scoreComputer.computeScore("ABBBB");
         } catch (IllegalArgumentException e) {
             System.err.println("Error: " + e.getMessage());
         } catch (Exception e) {

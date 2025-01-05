@@ -1,6 +1,8 @@
 package org.example.service.impl;
 
 import org.example.model.Player;
+import org.example.printer.TennisPrinter;
+import org.example.printer.impl.ConsoleTennisPrinter;
 import org.example.service.TennisScoreService;
 import org.example.state.GameStateHandler;
 import org.example.state.impl.NormalState;
@@ -10,12 +12,18 @@ public class TennisScoreServiceImpl implements TennisScoreService {
     private final Player player1;
     private final Player player2;
     private GameStateHandler state;
+    private TennisPrinter printer;
 
     public TennisScoreServiceImpl(Player player1, Player player2) {
-        if(player1 == null || player2 == null) throw new IllegalArgumentException("player could not be null");
+        this(player1, player2, new ConsoleTennisPrinter());
+    }
+
+    public TennisScoreServiceImpl(Player player1, Player player2, TennisPrinter tennisPrinter) {
+        if(player1 == null || player2 == null || tennisPrinter == null) throw new IllegalArgumentException("arguments could not be null");
         this.player1 = player1;
         this.player2 = player2;
         this.state = new NormalState(this);
+        this.printer = tennisPrinter;
     }
 
     public void setState(GameStateHandler state) {
@@ -63,26 +71,27 @@ public class TennisScoreServiceImpl implements TennisScoreService {
 
     public void player1Winner() {
         player1.setWinner(true);
-        System.out.println("Player " + player1.getId() + " wins the game");
+        printer.printPlayerWinner(player1.getId());
     }
 
     public void player2Winner() {
         player2.setWinner(true);
-        System.out.println("Player " + player2.getId() + " wins the game");
+        printer.printPlayerWinner(player2.getId());
     }
     public void player1Advantage() {
-        System.out.println("Player " + player1.getId() + ": Advantage / Player " + player2.getId() + ": 40");
+        printer.printPlayer1Advantage(player1.getId(), player2.getId());
     }
 
     public void player2Advantage() {
-        System.out.println("Player " + player1.getId() + ": 40 / Player " + player2.getId() + ": Advantage");
+        printer.printPlayer2Advantage(player1.getId(), player2.getId());
+
     }
 
     public void deuce() {
-        System.out.println("Deuce");
+        printer.printDeuce();
     }
 
     public void printCurrentScore() {
-        System.out.println("Player " + player1.getId() + ": " + player1.getScore() + " / Player " + player2.getId() + ": " + player2.getScore());
+        printer.printCurrentScore(player1.getId(), player1.getScore(), player2.getId(), player2.getScore());
     }
 }
