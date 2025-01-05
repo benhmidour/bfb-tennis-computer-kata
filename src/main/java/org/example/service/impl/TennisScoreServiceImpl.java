@@ -19,6 +19,7 @@ public class TennisScoreServiceImpl implements TennisScoreService {
     }
 
     public TennisScoreServiceImpl(Player player1, Player player2, TennisPrinter tennisPrinter) {
+        // Objects.requireNonNull | Optionnal
         if(player1 == null || player2 == null || tennisPrinter == null) throw new IllegalArgumentException("arguments could not be null");
         this.player1 = player1;
         this.player2 = player2;
