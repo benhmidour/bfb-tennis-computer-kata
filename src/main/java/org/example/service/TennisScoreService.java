@@ -13,4 +13,9 @@ public interface TennisScoreService {
     public boolean isGameWonByPlayer2();
     public void resetGame();
     public void printCurrentScore();
+    public void player1Winner();
+    public void player2Winner();
+    public void player1Advantage();
+    public void player2Advantage();
+    public void deuce();
 }

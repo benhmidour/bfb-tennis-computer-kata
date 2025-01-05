@@ -59,6 +59,27 @@ public class TennisScoreServiceImpl implements TennisScoreService {
         setState(new NormalState(this));
     }
 
+    public void player1Winner() {
+        player1.setWinner(true);
+        System.out.println("Player " + player1.getId() + " wins the game");
+    }
+
+    public void player2Winner() {
+        player2.setWinner(true);
+        System.out.println("Player " + player2.getId() + " wins the game");
+    }
+    public void player1Advantage() {
+        System.out.println("Player " + player1.getId() + ": Advantage / Player " + player2.getId() + ": 40");
+    }
+
+    public void player2Advantage() {
+        System.out.println("Player " + player1.getId() + ": 40 / Player " + player2.getId() + ": Advantage");
+    }
+
+    public void deuce() {
+        System.out.println("Deuce");
+    }
+
     public void printCurrentScore() {
         System.out.println("Player " + player1.getId() + ": " + player1.getScore() + " / Player " + player2.getId() + ": " + player2.getScore());
     }

@@ -13,12 +13,12 @@ public class DeuceState implements GameStateHandler {
     @Override
     public void handlePointWonByPlayer1() {
         context.setState(new AdvantageState(context, true));
-        System.out.println("Player A: Advantage / Player B: 40");
+        context.player1Advantage();
     }
 
     @Override
     public void handlePointWonByPlayer2() {
         context.setState(new AdvantageState(context, false));
-        System.out.println("Player A: 40 / Player B: Advantage");
+        context.player2Advantage();
     }
 }

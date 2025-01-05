@@ -3,6 +3,7 @@ package org.example.model;
 public class Player {
     private char id;
     private int points = 0;
+    private boolean winner = false;
 
     public Player(char id) {
         this.id = id;
@@ -26,6 +27,14 @@ public class Player {
 
     public void resetPoints() {
         this.points = 0;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
     }
 
     public String getScore() {
