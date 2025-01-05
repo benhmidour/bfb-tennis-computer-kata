@@ -12,12 +12,14 @@ public class TennisScoreServiceImpl implements TennisScoreService {
     private GameStateHandler state;
 
     public TennisScoreServiceImpl(Player player1, Player player2) {
+        if(player1 == null || player2 == null) throw new IllegalArgumentException("player could not be null");
         this.player1 = player1;
         this.player2 = player2;
         this.state = new NormalState(this);
     }
 
     public void setState(GameStateHandler state) {
+        if(state == null) throw new IllegalArgumentException("state could not be null");
         this.state = state;
     }
 

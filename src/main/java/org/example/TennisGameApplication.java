@@ -9,6 +9,12 @@ public class TennisGameApplication {
         Player player1 = new Player('A');
         Player player2 = new Player('B');
         TennisScoreService scoreComputer = new TennisScoreServiceImpl(player1, player2);
-        scoreComputer.computeScore("ABABABABABBB");
+        try {
+            scoreComputer.computeScore("ABBBAAA");
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+        }
     }
 }
