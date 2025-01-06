@@ -1,11 +1,11 @@
-package org.example.service.impl;
+package com.bfb.kata.tennis.service.impl;
 
-import org.example.model.Player;
-import org.example.printer.TennisPrinter;
-import org.example.printer.impl.ConsoleTennisPrinter;
-import org.example.service.TennisScoreService;
-import org.example.state.GameStateHandler;
-import org.example.state.impl.NormalState;
+import com.bfb.kata.tennis.model.Player;
+import com.bfb.kata.tennis.printer.TennisPrinter;
+import com.bfb.kata.tennis.printer.impl.ConsoleTennisPrinter;
+import com.bfb.kata.tennis.service.TennisScoreService;
+import com.bfb.kata.tennis.state.GameStateHandler;
+import com.bfb.kata.tennis.state.impl.NormalState;
 
 public class TennisScoreServiceImpl implements TennisScoreService {
 

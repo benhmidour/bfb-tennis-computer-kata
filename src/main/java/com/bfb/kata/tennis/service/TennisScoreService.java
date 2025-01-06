@@ -1,6 +1,6 @@
-package org.example.service;
+package com.bfb.kata.tennis.service;
 
-import org.example.state.GameStateHandler;
+import com.bfb.kata.tennis.state.GameStateHandler;
 
 public interface TennisScoreService {
     public void computeScore(String input);

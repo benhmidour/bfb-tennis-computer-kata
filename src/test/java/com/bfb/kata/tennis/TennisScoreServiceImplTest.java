@@ -1,8 +1,8 @@
-package com.example;
+package com.bfb.kata.tennis;
 
-import org.example.model.Player;
-import org.example.printer.TennisPrinter;
-import org.example.service.impl.TennisScoreServiceImpl;
+import com.bfb.kata.tennis.model.Player;
+import com.bfb.kata.tennis.printer.TennisPrinter;
+import com.bfb.kata.tennis.service.impl.TennisScoreServiceImpl;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.Assert;

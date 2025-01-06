@@ -1,15 +1,13 @@
-package com.example;
+package com.bfb.kata.tennis;
 
-import org.example.model.Player;
-import org.example.service.impl.TennisScoreServiceImpl;
-import org.example.state.impl.AdvantageState;
-import org.example.state.impl.DeuceState;
+import com.bfb.kata.tennis.service.impl.TennisScoreServiceImpl;
+import com.bfb.kata.tennis.state.impl.AdvantageState;
+import com.bfb.kata.tennis.state.impl.DeuceState;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.*;
 
 public class DeuceStateTest {
 

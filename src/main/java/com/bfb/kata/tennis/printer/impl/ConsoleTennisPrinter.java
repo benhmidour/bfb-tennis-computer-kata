@@ -1,6 +1,6 @@
-package org.example.printer.impl;
+package com.bfb.kata.tennis.printer.impl;
 
-import org.example.printer.TennisPrinter;
+import com.bfb.kata.tennis.printer.TennisPrinter;
 
 public class ConsoleTennisPrinter implements TennisPrinter {
     @Override

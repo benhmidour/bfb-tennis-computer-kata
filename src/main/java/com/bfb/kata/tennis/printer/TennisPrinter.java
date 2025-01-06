@@ -1,4 +1,4 @@
-package org.example.printer;
+package com.bfb.kata.tennis.printer;
 
 public interface TennisPrinter {
 

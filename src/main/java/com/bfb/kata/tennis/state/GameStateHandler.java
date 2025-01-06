@@ -1,4 +1,4 @@
-package org.example.state;
+package com.bfb.kata.tennis.state;
 
 public interface GameStateHandler {
     void handlePointWonByPlayer1();

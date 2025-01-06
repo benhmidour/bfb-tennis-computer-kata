@@ -1,7 +1,7 @@
-package org.example.state.impl;
+package com.bfb.kata.tennis.state.impl;
 
-import org.example.service.TennisScoreService;
-import org.example.state.GameStateHandler;
+import com.bfb.kata.tennis.service.TennisScoreService;
+import com.bfb.kata.tennis.state.GameStateHandler;
 
 public class DeuceState implements GameStateHandler {
     private final TennisScoreService context;

@@ -1,4 +1,4 @@
-package org.example.model;
+package com.bfb.kata.tennis.model;
 
 public class Player {
     private char id;

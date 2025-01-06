@@ -1,8 +1,8 @@
-package org.example;
+package com.bfb.kata.tennis;
 
-import org.example.model.Player;
-import org.example.service.TennisScoreService;
-import org.example.service.impl.TennisScoreServiceImpl;
+import com.bfb.kata.tennis.model.Player;
+import com.bfb.kata.tennis.service.TennisScoreService;
+import com.bfb.kata.tennis.service.impl.TennisScoreServiceImpl;
 
 public class TennisGameApplication {
     public static void main(String[] args) {
