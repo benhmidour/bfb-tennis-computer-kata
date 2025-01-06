@@ -51,6 +51,15 @@ public class TennisScoreServiceImplTest {
         boolean result = tennisScoreService.isDeuce();
 
         assertTrue(result);
+        verify(tennisPrinter, times(5)).printCurrentScore(anyChar(), any(), anyChar(), any());
+        verify(tennisPrinter, times(1)).printDeuce();
+    }
+
+    @Test
+    public void testComputeScore_Player1Advantage() {
+        tennisScoreService.computeScore("ABABABA");
+
+        verify(tennisPrinter, times(1)).printPlayer1Advantage('A', 'B');
     }
 
     @Test
@@ -58,6 +67,7 @@ public class TennisScoreServiceImplTest {
         tennisScoreService.computeScore("AAAA");
 
         verify(tennisPrinter, times(1)).printPlayerWinner('A');
+        verify(tennisPrinter, times(3)).printCurrentScore(anyChar(), any(), anyChar(), any());
     }
 
     @Test
@@ -65,6 +75,7 @@ public class TennisScoreServiceImplTest {
         tennisScoreService.computeScore("BBBB");
 
         verify(tennisPrinter, times(1)).printPlayerWinner('B');
+        verify(tennisPrinter, times(3)).printCurrentScore(anyChar(), any(), anyChar(), any());
     }
 
     @Test
